@@ -36,7 +36,13 @@ def get_font_size_recommendations():
             "max_font_size": 8,
             "description": "原始默认设置，适用于大多数PCB布局"
         },
-        "中等字体 (推荐)": {
+        "平衡字体 (推荐)": {
+            "base_font_size": 7,
+            "min_font_size": 4,
+            "max_font_size": 10,
+            "description": "平衡字体大小，在可读性和重叠避免之间的最佳选择"
+        },
+        "中等字体": {
             "base_font_size": 8,
             "min_font_size": 5,
             "max_font_size": 12,
