@@ -67,6 +67,20 @@ max_font_size: int = 12   # 最大字体大小
 
 ## 🔧 高级配置
 
+### 字体选择优化
+
+程序现在使用 **Arial Narrow** 作为首选字体，这是一个重要的优化：
+
+- **Arial Narrow**: 比普通Arial窄约20%，显著减少水平占用空间
+- **减少重叠**: 相同字号下，文字宽度更小，重叠概率降低
+- **保持清晰**: 字体仍然清晰易读，适合PCB制造使用
+
+**字体优先级**:
+1. Arial Narrow (首选，最窄)
+2. Arial (备选)
+3. DejaVu Sans (跨平台兼容)
+4. Liberation Sans (开源备选)
+
 ### 修改PDF生成器中的字体限制
 
 编辑 `pdf_generator.py` 中的 `_calculate_optimal_text_size` 函数：
@@ -83,7 +97,19 @@ optimal_size = min(8.0, optimal_size)  # 最大字体大小
 
 ```python
 # 基于0201封装的字体大小（放大倍数）
-package_based_size = max_text_height_mm * 2.83 * 3  # 3倍放大
+package_based_size = max_text_height_mm * 2.83 * 2.5  # 2.5倍放大
+```
+
+### 字体测试工具
+
+使用字体测试工具检查系统字体并生成对比图：
+
+```bash
+# 测试系统中可用的字体
+python test_fonts.py
+
+# 查看生成的字体对比图
+# font_test_comparison.pdf
 ```
 
 ## 📊 字体大小对比

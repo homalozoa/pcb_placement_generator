@@ -23,8 +23,8 @@ class PDFGenerator:
     def __init__(self, config: Config):
         self.config = config
         
-        # 设置英文字体
-        plt.rcParams['font.sans-serif'] = ['DejaVu Sans', 'Arial', 'Liberation Sans']
+        # 设置英文字体 - 优先使用窄字体减少水平占用
+        plt.rcParams['font.sans-serif'] = ['Arial Narrow', 'Arial', 'DejaVu Sans', 'Liberation Sans']
         plt.rcParams['axes.unicode_minus'] = False
         
         # 图形参数
@@ -206,7 +206,7 @@ class PDFGenerator:
         text_length = len(text)
 
         # 估算文本尺寸
-        char_width = text_size * 0.6  # 近似字符宽度
+        char_width = text_size * 0.55  # Arial Narrow字符宽度
         text_width = text_length * char_width
 
         # 如果文本宽度超过元器件宽度的80%，尝试外部定位
@@ -276,7 +276,7 @@ class PDFGenerator:
                                      text_size: float, comp_width: float, comp_height: float) -> Tuple[float, float]:
         """寻找不重叠的文本位置"""
         # 估算文本尺寸
-        char_width = text_size * 0.6
+        char_width = text_size * 0.55  # Arial Narrow字符宽度
         char_height = text_size
         text_width = len(text) * char_width
         text_height = char_height
@@ -316,7 +316,7 @@ class PDFGenerator:
 
     def _record_text_position(self, x: float, y: float, text: str, text_size: float):
         """记录文本位置"""
-        char_width = text_size * 0.6
+        char_width = text_size * 0.55  # Arial Narrow字符宽度
         char_height = text_size
         text_width = len(text) * char_width
         text_height = char_height
@@ -360,8 +360,8 @@ class PDFGenerator:
     def _find_optimal_text_position(self, x: float, y: float, text: str,
                                    text_size: float, comp_width: float, comp_height: float) -> Tuple[float, float]:
         """寻找最优的文本位置，优先使用原始坐标"""
-        # 估算文本尺寸（更精确的估算）
-        char_width = text_size * 0.7  # 字符宽度
+        # 估算文本尺寸（针对Arial Narrow优化）
+        char_width = text_size * 0.55  # Arial Narrow字符宽度更窄
         char_height = text_size * 1.0  # 字符高度
         text_width = len(text) * char_width
         text_height = char_height
