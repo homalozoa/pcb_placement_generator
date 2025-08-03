@@ -20,9 +20,9 @@ class Config:
     margin_ratio: float = 0.15  # 增加边距比例，提供更多空间
     
     # 文字配置
-    base_font_size: int = 6
-    min_font_size: int = 3
-    max_font_size: int = 10
+    base_font_size: int = 8  # 增加基础字体大小
+    min_font_size: int = 5   # 增加最小字体大小
+    max_font_size: int = 12  # 增加最大字体大小
     
     # 颜色配置
     component_edge_color: str = 'blue'

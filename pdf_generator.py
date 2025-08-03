@@ -535,17 +535,17 @@ class PDFGenerator:
         # 文字高度不应超过最小间距的25%（更严格的限制）
         distance_based_size = (min_distance * 0.25) * 2.83
 
-        # 基于0201封装的字体大小（放大2倍使其可读）
-        package_based_size = max_text_height_mm * 2.83 * 2  # ≈ 1.36pt
+        # 基于0201封装的字体大小（放大3倍使其更可读）
+        package_based_size = max_text_height_mm * 2.83 * 3  # ≈ 2.04pt
 
         # 取两者中的较小值，确保既不重叠又基于0201尺寸
         optimal_size = min(distance_based_size, package_based_size)
 
         # 确保最小可读性
-        optimal_size = max(1.5, optimal_size)  # 最小1.5pt
+        optimal_size = max(3.0, optimal_size)  # 增加最小字体到3pt
 
         # 限制最大值避免过大
-        optimal_size = min(4.0, optimal_size)  # 最大4pt
+        optimal_size = min(8.0, optimal_size)  # 增加最大字体到8pt
 
         return optimal_size
 
